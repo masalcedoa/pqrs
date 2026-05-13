@@ -1,0 +1,7 @@
+{
+  "crons": [
+    { "path": "/api/notifications/dispatch", "schedule": "*/5 * * * *" },
+    { "path": "/api/jobs/term-calc",         "schedule": "0 6 * * *"   },
+    { "path": "/api/jobs/snapshot-pbi",      "schedule": "30 1 * * *"  }
+  ]
+}

@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    ports: ["3000:3000"]
+    env_file: .env.local
+    depends_on: [supabase-db]
+
+  supabase-db:
+    image: supabase/postgres:15.6.1.146
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports: ["54322:5432"]
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+      - ./supabase/migrations:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  dbdata:
